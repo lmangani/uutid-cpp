@@ -1,4 +1,4 @@
-# Header-only library to generate TSID
+# cpp header-only library for TSID generation
 > TSID = Time-Sortable Unique Identifiers
 
 [![C++ CI](https://github.com/lmangani/uutid-cpp/actions/workflows/main.yml/badge.svg)](https://github.com/lmangani/uutid-cpp/actions/workflows/main.yml)
