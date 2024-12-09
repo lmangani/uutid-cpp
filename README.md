@@ -1,4 +1,6 @@
-# Heade-only library to generate TSID _(Time-Sortable Unique Identifiers)_
+# Heade-only library to generate TSID
+> TSID = Time-Sortable Unique Identifiers
+
 [![C++ CI](https://github.com/lmangani/uutid-cpp/actions/workflows/main.yml/badge.svg)](https://github.com/lmangani/uutid-cpp/actions/workflows/main.yml)
 
 uutid-cpp is a header-only C++11 library that generates time-sortable unique identifiers. These IDs are similar to UUIDs but maintain time-ordering properties, making them perfect for distributed systems where chronological ordering is important.
