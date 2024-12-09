@@ -5,7 +5,7 @@
 
 uutid-cpp is a header-only C++11 library that generates time-sortable unique identifiers. These IDs are similar to UUIDs but maintain time-ordering properties, making them perfect for distributed systems where chronological ordering is important.
 
-> The uutid-cpp library is a very loose port of the [https://github.com/flowstack/go-uutid] library
+> The uutid-cpp library is a very loose port of the [go-uutid](https://github.com/flowstack/go-uutid) library
 
 ## Features
 
@@ -83,7 +83,7 @@ auto id2 = UUTID::from_string("550e8400-e29b-41d4-a716-446655440000");
 ### Set Version
 
 ```cpp
-UUTID::set_version(5);  // Default is 4
+UUTID::set_version(4);  // Default is 4
 ```
 
 ## Building and Testing
