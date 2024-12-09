@@ -40,7 +40,6 @@ private:
         try {
             for (size_t i = 0; i < hex.length(); i += 2) {
                 std::string byteString = hex.substr(i, 2);
-                // Validate hex characters
                 if (!std::all_of(byteString.begin(), byteString.end(), 
                     [](char c) { return std::isxdigit(c); })) {
                     throw std::runtime_error("Invalid hexadecimal character");
@@ -59,9 +58,9 @@ public:
         if (new_rng) {
             rng_ = std::move(new_rng);
         } else {
-            rng_ = std::make_unique<std::mt19937_64>(
+            rng_.reset(new std::mt19937_64(
                 std::chrono::high_resolution_clock::now().time_since_epoch().count()
-            );
+            ));
         }
     }
 
@@ -137,12 +136,13 @@ public:
         }
 
         auto find_char = [](char c) -> int {
-            const char* pos = ::strchr(base64_chars, c);  // Use global scope resolution
+            const char* pos = ::strchr(base64_chars, c);
             if (!pos) throw std::runtime_error("Invalid base64 character");
             return pos - base64_chars;
         };
 
-        UUTID id; size_t out_idx = 0;
+        UUTID id;
+        size_t out_idx = 0;
         
         for (size_t i = 0; i < b64.length(); i += 4) {
             uint32_t n = static_cast<uint32_t>(find_char(b64[i])) << 18;
@@ -229,9 +229,9 @@ public:
 
 // Initialize static members
 int UUTID::version_ = 4;
-std::unique_ptr<std::mt19937_64> UUTID::rng_ = std::make_unique<std::mt19937_64>(
+std::unique_ptr<std::mt19937_64> UUTID::rng_(new std::mt19937_64(
     std::chrono::high_resolution_clock::now().time_since_epoch().count()
-);
+));
 constexpr char UUTID::base64_chars[];
 
 #endif // UUTID_HPP
